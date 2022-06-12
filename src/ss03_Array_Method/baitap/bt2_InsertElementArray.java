@@ -10,8 +10,7 @@ public class bt2_InsertElementArray {
         int insert = input.nextInt();
         System.out.print("Nhập vị trí thêm vào trong mảng:");
         int index = input.nextInt();
-
-        if(index <= -1 && index >= array.length-1){
+        if(index <= -1 || index > array.length-1){
             System.out.println("Không chèn được phần tử trong mảng");
         }else{
             for(int i = index; i <array.length;i++){
