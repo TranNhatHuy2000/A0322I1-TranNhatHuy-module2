@@ -26,7 +26,7 @@ public class Rectangle {
     }
 
     public double getArea(){
-        return (int)this.height*(int)this.width;
+        return this.height*this.width;
     }
 
     public double getPerimeter(){
