@@ -1,4 +1,4 @@
-package ss10_Stack_Queue.thuchanh;
+package ss10_Stack_Queue.thuchanh.thuchanh1_Stack;
 public class GenericStackClient {
     private static void stackOfIStrings(){
         MyGenericStack stack = new MyGenericStack();
