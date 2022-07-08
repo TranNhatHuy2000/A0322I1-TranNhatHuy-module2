@@ -32,5 +32,6 @@ public class bt6_CheckBrackets {
     }
     public static void main(String[] args) {
         System.out.println(checkBrakets());
+
     }
 }
