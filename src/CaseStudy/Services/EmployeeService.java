@@ -7,5 +7,5 @@ import java.util.List;
 public interface EmployeeService extends Service {
     List<Employee> displayEmployee();
     void addEmployee(Employee employee);
-    void editEmployee(int index,Employee employee);
+    void editEmployee(int index, Employee employee);
 }

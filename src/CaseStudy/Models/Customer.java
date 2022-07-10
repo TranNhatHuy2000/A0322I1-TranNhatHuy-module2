@@ -13,7 +13,8 @@ public class Customer extends Person {
         this.address = address;
     }
 
-    public Customer(String fullName, String dateOfBirth, String gender, int idNumber, int phone, String email, int idCustomer, String typeCustomer, String address) {
+    public Customer(int idCustomer, String typeCustomer, String address,
+                    String fullName, String dateOfBirth, String gender, int idNumber, int phone,String email) {
         super(fullName, dateOfBirth, gender, idNumber, phone, email);
         this.idCustomer = idCustomer;
         this.typeCustomer = typeCustomer;
@@ -47,7 +48,8 @@ public class Customer extends Person {
     @Override
     public String toString() {
         return "Customer{" +
-                "idCustomer=" + idCustomer +
+                super.toString()+
+                ", idCustomer=" + idCustomer +
                 ", typeCustomer='" + typeCustomer + '\'' +
                 ", address='" + address + '\'' +
                 '}';

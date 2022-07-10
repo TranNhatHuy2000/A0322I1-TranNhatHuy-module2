@@ -71,13 +71,13 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return
                 "fullName='" + fullName + '\'' +
                 ", dateOfBirth='" + dateOfBirth + '\'' +
                 ", gender='" + gender + '\'' +
                 ", idNumber=" + idNumber +
                 ", phone=" + phone +
-                ", email='" + email + '\'' +
-                '}';
+                ", email='" + email + '\''
+               ;
     }
 }

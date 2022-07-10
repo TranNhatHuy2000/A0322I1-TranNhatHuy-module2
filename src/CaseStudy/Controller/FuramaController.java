@@ -1,8 +1,18 @@
 package CaseStudy.Controller;
 
+import CaseStudy.Models.Customer;
+import CaseStudy.Models.Employee;
+import CaseStudy.Services.CustomerService;
+import CaseStudy.Services.CustomerServiceImpl;
+import CaseStudy.Services.EmployeeService;
+import CaseStudy.Services.EmployeeServiceImpl;
+
+
 import java.util.Scanner;
 
 public class FuramaController {
+    private static EmployeeService employeeService = new EmployeeServiceImpl();
+    private static CustomerService customerService = new CustomerServiceImpl();
 
     public static void main(String[] args) {
         displayMainMenu();
@@ -19,22 +29,22 @@ public class FuramaController {
                     "5. Promotion Management\n"+
                     "6. Exit");
             System.out.print("input choice: ");
-            choice = input.nextInt();
+            choice = Integer.parseInt(input.nextLine());
             switch (choice){
                 case 1:
-                    displayEmployee();
+                    menuEmployee();
                     break;
                 case 2:
-                    displayCustomer();
+                    menuCustomer();
                     break;
                 case 3:
-                    displayFacility();
+                    menuFacility();
                     break;
                 case 4:
-                    displayBooking();
+                    menuBooking();
                     break;
                 case 5:
-                    displayPromotion();
+                    menuPromotion();
                     break;
                 case 6:
                     System.exit(0);
@@ -45,17 +55,95 @@ public class FuramaController {
         }
     }
 
+
+    /*---------------------------------------------Employee---------------------------------------------*/
     public static void displayEmployee(){
+        for (Employee employee : employeeService.displayEmployee()){
+            System.out.println(employee);
+        }
+    }
+
+    public static void addNewEmployee(Employee employee){
+        employeeService.addEmployee(employee);
+    }
+
+    public static void editEmployee(int id, Employee employee){
+        employeeService.editEmployee(id, employee);
+    }
+
+    public static void menuEmployee(){
         Scanner input = new Scanner(System.in);
         int choice = 0;
         while (choice != 4) {
+            System.out.println("-----Employee Manager-----");
             System.out.println("1. Display list employees\n" +
                     "2. Add new employee\n" +
                     "3. Edit employee\n" +
                     "4. Return main menu");
             System.out.print("input choice: ");
-            choice = input.nextInt();
+            choice = Integer.parseInt(input.nextLine());
             switch (choice){
+                case 1:
+                    System.out.println("-----Display List Employee-----");
+                    displayEmployee();
+                    System.out.println("-------------------------------");
+                    break;
+                case 2 :
+                    System.out.println("-----Add New Employee-----");
+                    System.out.print("Input ID Employee: ");
+                    int idEmployee = Integer.parseInt(input.nextLine());
+                    System.out.print("Level: ");
+                    String level = input.nextLine();
+                    System.out.print("Position: ");
+                    String position = input.nextLine();
+                    System.out.print("Salary: ");
+                    double salary = Double.parseDouble(input.nextLine());
+                    System.out.print("Full Name: ");
+                    String fullName = input.nextLine();
+                    System.out.print("Date of birth: ");
+                    String dateOfBirth = input.nextLine();
+                    System.out.print("Gender: ");
+                    String gender = input.nextLine();
+                    System.out.print("ID: ");
+                    int idNumber = Integer.parseInt(input.nextLine());
+                    System.out.print("Phone: ");
+                    int phone = Integer.parseInt(input.nextLine());
+                    System.out.print("Mail: ");
+                    String email = input.nextLine();
+                    System.out.println();
+                    addNewEmployee(new Employee(idEmployee,level,position,salary,fullName,dateOfBirth,gender,idNumber,phone,email ));
+                    System.out.println("added success!!!");
+                    System.out.println("-------------------------------");
+                    break;
+                case 3:
+                    System.out.println("-----Edit Employee-----");
+                    System.out.println("Edit id:");
+                    int edit = Integer.parseInt(input.nextLine());
+                    System.out.print("Edit ID Employee: ");
+                    int idEmployeeEdit = Integer.parseInt(input.nextLine());
+                    System.out.print("Edit Level: ");
+                    String levelEdit = input.nextLine();
+                    System.out.print("Edit Position: ");
+                    String positionEdit = input.nextLine();
+                    System.out.print("Edit Salary: ");
+                    double salaryEdit = Double.parseDouble(input.nextLine());
+                    System.out.print("Edit Full Name: ");
+                    String fullNameEdit = input.nextLine();
+                    System.out.print("Edit Date of birth: ");
+                    String dateOfBirthEdit = input.nextLine();
+                    System.out.print("Edit Gender: ");
+                    String genderEdit = input.nextLine();
+                    System.out.print("Edit ID: ");
+                    int idNumberEdit = Integer.parseInt(input.nextLine());
+                    System.out.print("Edit Phone: ");
+                    int phoneEdit = Integer.parseInt(input.nextLine());
+                    System.out.print("Edit Mail: ");
+                    String emailEdit = input.nextLine();
+                    System.out.println();
+                    editEmployee(edit,new Employee(idEmployeeEdit,levelEdit,positionEdit,salaryEdit,fullNameEdit,dateOfBirthEdit,genderEdit,idNumberEdit,phoneEdit,emailEdit));
+                    System.out.println("Edited success!!!");
+                    System.out.println("-------------------------------");
+                    break;
                 case 4:
                     displayMainMenu();
                     break;
@@ -64,7 +152,23 @@ public class FuramaController {
             }
         }
     }
+
+    /*---------------------------------------------Customer---------------------------------------------*/
     public static void displayCustomer(){
+        for (Customer customer : customerService.displayCustomer()){
+            System.out.println(customer);
+        }
+    }
+
+    public static void addNewCustomer(Customer customer){
+        customerService.addCustomer(customer);
+    }
+
+    public static void editCustomer(int id, Customer customer){
+        customerService.editCustomer(id, customer);
+    }
+
+    public static void menuCustomer(){
         Scanner input = new Scanner(System.in);
         int choice = 0;
         while (choice != 4) {
@@ -73,8 +177,66 @@ public class FuramaController {
                     "3. Edit customer\n" +
                     "4. Return main menu");
             System.out.print("input choice: ");
-            choice = input.nextInt();
+            choice = Integer.parseInt(input.nextLine());
             switch (choice){
+                case 1:
+                    System.out.println("-----Display List Customer-----");
+                    displayCustomer();
+                    System.out.println("-------------------------------");
+                    break;
+                case 2:
+                    System.out.println("-----Add New Customer-----");
+                    System.out.print("Input ID Customer: ");
+                    int idCustomer = Integer.parseInt(input.nextLine());
+                    System.out.print("Type Customer: ");
+                    String typeCustomer = input.nextLine();
+                    System.out.print("Address: ");
+                    String address = input.nextLine();
+                    System.out.print("Full Name: ");
+                    String fullName = input.nextLine();
+                    System.out.print("Date of birth: ");
+                    String dateOfBirth = input.nextLine();
+                    System.out.print("Gender: ");
+                    String gender = input.nextLine();
+                    System.out.print("ID: ");
+                    int idNumber = Integer.parseInt(input.nextLine());
+                    System.out.print("Phone: ");
+                    int phone = Integer.parseInt(input.nextLine());
+                    System.out.print("Mail: ");
+                    String email = input.nextLine();
+                    System.out.println();
+                    addNewCustomer(new Customer(idCustomer,typeCustomer,address,fullName,dateOfBirth,gender,idNumber,phone,email));
+                    System.out.println("added success!!!");
+                    System.out.println("-------------------------------");
+                    break;
+                case 3:
+                    System.out.println("-----Edit Customer-----");
+                    System.out.println("Edit id:");
+                    int edit = Integer.parseInt(input.nextLine());
+                    System.out.print("Input ID Customer: ");
+                    int idCustomerEdit = Integer.parseInt(input.nextLine());
+                    System.out.print("Type Customer: ");
+                    String typeCustomerEdit = input.nextLine();
+                    System.out.print("Address: ");
+                    String addressEdit = input.nextLine();
+                    System.out.print("Full Name: ");
+                    String fullNameEdit = input.nextLine();
+                    System.out.print("Date of birth: ");
+                    String dateOfBirthEdit = input.nextLine();
+                    System.out.print("Gender: ");
+                    String genderEdit = input.nextLine();
+                    System.out.print("ID: ");
+                    int idNumberEdit = Integer.parseInt(input.nextLine());
+                    System.out.print("Phone: ");
+                    int phoneEdit= Integer.parseInt(input.nextLine());
+                    System.out.print("Mail: ");
+                    String emailEdit = input.nextLine();
+                    System.out.println();
+
+                    editCustomer(edit,new Customer(idCustomerEdit,typeCustomerEdit,addressEdit,fullNameEdit,dateOfBirthEdit,genderEdit,idNumberEdit,phoneEdit,emailEdit));
+                    System.out.println("added success!!!");
+                    System.out.println("-------------------------------");
+                    break;
                 case 4:
                     displayMainMenu();
                     break;
@@ -83,7 +245,7 @@ public class FuramaController {
             }
         }
     }
-    public static void displayFacility(){
+    public static void menuFacility(){
         Scanner input = new Scanner(System.in);
         int choice = 0;
         while (choice != 4) {
@@ -102,7 +264,7 @@ public class FuramaController {
             }
         }
     }
-    public static void displayBooking(){
+    public static void menuBooking(){
         Scanner input = new Scanner(System.in);
         int choice = 0;
         while (choice != 6) {
@@ -123,7 +285,7 @@ public class FuramaController {
             }
         }
     }
-    public static void displayPromotion(){
+    public static void menuPromotion(){
         Scanner input = new Scanner(System.in);
         int choice = 0;
         while (choice != 3) {
