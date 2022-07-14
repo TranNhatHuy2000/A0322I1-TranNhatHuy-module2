@@ -17,6 +17,10 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
                  "Nu",7415325,123456789,"abc@gmail.com"));
     }
 
+    public static List<Employee> getEmployeesList() {
+        return employeesList;
+    }
+
     @Override
     public List<Employee> displayEmployee() {
         return employeesList;

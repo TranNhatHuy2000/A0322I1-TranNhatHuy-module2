@@ -18,6 +18,10 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                 "Nam",191915126,123456789,"55abc@gmail.com"));
     }
 
+    public static List<Customer> getCustomerList() {
+        return customerList;
+    }
+
     @Override
     public List<Customer> displayCustomer() {
         return customerList;

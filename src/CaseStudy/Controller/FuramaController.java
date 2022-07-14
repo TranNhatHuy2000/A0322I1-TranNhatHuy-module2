@@ -6,13 +6,19 @@ import CaseStudy.Services.CustomerService;
 import CaseStudy.Services.CustomerServiceImpl;
 import CaseStudy.Services.EmployeeService;
 import CaseStudy.Services.EmployeeServiceImpl;
+import CaseStudy.repository.CustomerRepositoryImpl;
+import CaseStudy.repository.EmployeeRepositoryImpl;
 
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 public class FuramaController {
     private static EmployeeService employeeService = new EmployeeServiceImpl();
     private static CustomerService customerService = new CustomerServiceImpl();
+    private static List<Customer> customerList = CustomerRepositoryImpl.getCustomerList();
+    private static List<Employee> employeesList = EmployeeRepositoryImpl.getEmployeesList();
 
     public static void main(String[] args) {
         displayMainMenu();
@@ -119,30 +125,37 @@ public class FuramaController {
                     System.out.println("-----Edit Employee-----");
                     System.out.println("Edit id:");
                     int edit = Integer.parseInt(input.nextLine());
-                    System.out.print("Edit ID Employee: ");
-                    int idEmployeeEdit = Integer.parseInt(input.nextLine());
-                    System.out.print("Edit Level: ");
-                    String levelEdit = input.nextLine();
-                    System.out.print("Edit Position: ");
-                    String positionEdit = input.nextLine();
-                    System.out.print("Edit Salary: ");
-                    double salaryEdit = Double.parseDouble(input.nextLine());
-                    System.out.print("Edit Full Name: ");
-                    String fullNameEdit = input.nextLine();
-                    System.out.print("Edit Date of birth: ");
-                    String dateOfBirthEdit = input.nextLine();
-                    System.out.print("Edit Gender: ");
-                    String genderEdit = input.nextLine();
-                    System.out.print("Edit ID: ");
-                    int idNumberEdit = Integer.parseInt(input.nextLine());
-                    System.out.print("Edit Phone: ");
-                    int phoneEdit = Integer.parseInt(input.nextLine());
-                    System.out.print("Edit Mail: ");
-                    String emailEdit = input.nextLine();
-                    System.out.println();
-                    editEmployee(edit,new Employee(idEmployeeEdit,levelEdit,positionEdit,salaryEdit,fullNameEdit,dateOfBirthEdit,genderEdit,idNumberEdit,phoneEdit,emailEdit));
-                    System.out.println("Edited success!!!");
-                    System.out.println("-------------------------------");
+                    Iterator<Employee> employeeIterator = employeesList.iterator();
+                    while (employeeIterator.hasNext()){
+                        Employee employee = employeeIterator.next();
+                        if (employee.getIdEmployee() == edit){
+                            System.out.print("Edit ID Employee: ");
+                            int idEmployeeEdit = Integer.parseInt(input.nextLine());
+                            System.out.print("Edit Level: ");
+                            String levelEdit = input.nextLine();
+                            System.out.print("Edit Position: ");
+                            String positionEdit = input.nextLine();
+                            System.out.print("Edit Salary: ");
+                            double salaryEdit = Double.parseDouble(input.nextLine());
+                            System.out.print("Edit Full Name: ");
+                            String fullNameEdit = input.nextLine();
+                            System.out.print("Edit Date of birth: ");
+                            String dateOfBirthEdit = input.nextLine();
+                            System.out.print("Edit Gender: ");
+                            String genderEdit = input.nextLine();
+                            System.out.print("Edit ID: ");
+                            int idNumberEdit = Integer.parseInt(input.nextLine());
+                            System.out.print("Edit Phone: ");
+                            int phoneEdit = Integer.parseInt(input.nextLine());
+                            System.out.print("Edit Mail: ");
+                            String emailEdit = input.nextLine();
+                            System.out.println();
+                            editEmployee(edit,new Employee(idEmployeeEdit,levelEdit,positionEdit,salaryEdit,fullNameEdit,dateOfBirthEdit,genderEdit,idNumberEdit,phoneEdit,emailEdit));
+                            System.out.println("Edited success!!!");
+                            System.out.println("-------------------------------");
+                        }
+                    }
+                    System.out.println("Not found employee to edit");
                     break;
                 case 4:
                     displayMainMenu();
@@ -211,31 +224,37 @@ public class FuramaController {
                     break;
                 case 3:
                     System.out.println("-----Edit Customer-----");
-                    System.out.println("Edit id:");
-                    int edit = Integer.parseInt(input.nextLine());
-                    System.out.print("Input ID Customer: ");
-                    int idCustomerEdit = Integer.parseInt(input.nextLine());
-                    System.out.print("Type Customer: ");
-                    String typeCustomerEdit = input.nextLine();
-                    System.out.print("Address: ");
-                    String addressEdit = input.nextLine();
-                    System.out.print("Full Name: ");
-                    String fullNameEdit = input.nextLine();
-                    System.out.print("Date of birth: ");
-                    String dateOfBirthEdit = input.nextLine();
-                    System.out.print("Gender: ");
-                    String genderEdit = input.nextLine();
-                    System.out.print("ID: ");
-                    int idNumberEdit = Integer.parseInt(input.nextLine());
-                    System.out.print("Phone: ");
-                    int phoneEdit= Integer.parseInt(input.nextLine());
-                    System.out.print("Mail: ");
-                    String emailEdit = input.nextLine();
-                    System.out.println();
-
-                    editCustomer(edit,new Customer(idCustomerEdit,typeCustomerEdit,addressEdit,fullNameEdit,dateOfBirthEdit,genderEdit,idNumberEdit,phoneEdit,emailEdit));
-                    System.out.println("added success!!!");
-                    System.out.println("-------------------------------");
+                    Iterator<Customer> customerIterator = customerList.iterator();
+                    while (customerIterator.hasNext()){
+                        Customer customer = customerIterator.next();
+                        System.out.println("Edit id:");
+                        int edit = Integer.parseInt(input.nextLine());
+                        if (customer.getIdCustomer() == edit){
+                            System.out.print("Input ID Customer: ");
+                            int idCustomerEdit = Integer.parseInt(input.nextLine());
+                            System.out.print("Type Customer: ");
+                            String typeCustomerEdit = input.nextLine();
+                            System.out.print("Address: ");
+                            String addressEdit = input.nextLine();
+                            System.out.print("Full Name: ");
+                            String fullNameEdit = input.nextLine();
+                            System.out.print("Date of birth: ");
+                            String dateOfBirthEdit = input.nextLine();
+                            System.out.print("Gender: ");
+                            String genderEdit = input.nextLine();
+                            System.out.print("ID: ");
+                            int idNumberEdit = Integer.parseInt(input.nextLine());
+                            System.out.print("Phone: ");
+                            int phoneEdit= Integer.parseInt(input.nextLine());
+                            System.out.print("Mail: ");
+                            String emailEdit =input.nextLine() ;
+                            System.out.println();
+                            editCustomer(edit,new Customer(idCustomerEdit,typeCustomerEdit,addressEdit,fullNameEdit,dateOfBirthEdit,genderEdit,idNumberEdit,phoneEdit,emailEdit));
+                            System.out.println("added success!!!");
+                            System.out.println("-------------------------------");
+                        }
+                    }
+                    System.out.println("Not found customer to edit???");
                     break;
                 case 4:
                     displayMainMenu();
