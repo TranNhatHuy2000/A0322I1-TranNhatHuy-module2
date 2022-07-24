@@ -2,7 +2,7 @@ package CaseStudy.Models;
 
 public class House extends Facility {
     private String roomStandard;    /*tieu chuan phong*/
-    private byte numFloors;         /*so tang*/
+    private int numFloors;         /*so tang*/
 
     public House(){
 
@@ -13,7 +13,7 @@ public class House extends Facility {
         this.numFloors = numFloors;
     }
 
-    public House(String serviceName, double areaUse, double rentalCost, int maxNumPeople, String rentalType, String roomStandard, byte numFloors) {
+    public House(String serviceName, double areaUse, double rentalCost, int maxNumPeople, String rentalType, String roomStandard, int numFloors) {
         super(serviceName, areaUse, rentalCost, maxNumPeople, rentalType);
         this.roomStandard = roomStandard;
         this.numFloors = numFloors;
@@ -27,7 +27,7 @@ public class House extends Facility {
         this.roomStandard = roomStandard;
     }
 
-    public byte getNumFloors() {
+    public int getNumFloors() {
         return numFloors;
     }
 
@@ -38,6 +38,7 @@ public class House extends Facility {
     @Override
     public String toString() {
         return "House{" +
+                super.toString()+", "+
                 "roomStandard='" + roomStandard + '\'' +
                 ", numFloors=" + numFloors +
                 '}';
