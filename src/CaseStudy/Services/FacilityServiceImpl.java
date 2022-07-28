@@ -19,4 +19,9 @@ public class FacilityServiceImpl implements FacilityService {
     public void addFacility(Facility facility) {
         facilityRepository.addFacility(facility);
     }
+
+    @Override
+    public void displayFacilityMaintenance() {
+        facilityRepository.displayFacilityMaintenance();
+    }
 }

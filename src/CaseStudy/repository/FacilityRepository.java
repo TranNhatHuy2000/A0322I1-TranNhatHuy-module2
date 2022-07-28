@@ -6,4 +6,5 @@ import java.util.Map;
 public interface FacilityRepository {
     Map<Facility,Integer> displayFacility();
     void addFacility(Facility facility);
+    void displayFacilityMaintenance();
 }

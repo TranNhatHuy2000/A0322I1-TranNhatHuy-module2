@@ -1,10 +1,9 @@
 package CaseStudy.Controller;
 
-
-import CaseStudy.Models.Customer;
 import CaseStudy.Models.Facility;
 import CaseStudy.Models.House;
 import CaseStudy.Models.Room;
+import CaseStudy.Models.Villa;
 import CaseStudy.Services.FacilityService;
 import CaseStudy.Services.FacilityServiceImpl;
 import CaseStudy.repository.FacilityRepositoryImpl;
@@ -52,6 +51,60 @@ public class FacilityController {
 
     }
 
+    public static void addHouse(){
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("-----Add House-----");
+        System.out.print("Service Name : ");
+        String serviceName = input.nextLine();
+        System.out.print("Area Use: ");
+        double areaUse = Double.parseDouble(input.nextLine());
+        System.out.print("Rental Cost: ");
+        double rentalCost = Double.parseDouble(input.nextLine());
+        System.out.print("Number of People: ");
+        int numPeople = Integer.parseInt(input.nextLine());
+        System.out.print("Rental Type: ");
+        String rentalType = input.nextLine();
+        System.out.print("Room standard: ");
+        String standard = input.nextLine();
+        System.out.print("Number of floor:");
+        int floor = Integer.parseInt(input.nextLine());
+        System.out.println();
+        addNewFacility(new House(serviceName,areaUse,rentalCost, numPeople,rentalType,standard,floor) {
+        });
+        System.out.println("added success!!!");
+        System.out.println("-------------------------------");
+
+    }
+
+    public static void addVilla(){
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("-----Add Villa-----");
+        System.out.print("Service Name : ");
+        String serviceName = input.nextLine();
+        System.out.print("Area Use: ");
+        double areaUse = Double.parseDouble(input.nextLine());
+        System.out.print("Rental Cost: ");
+        double rentalCost = Double.parseDouble(input.nextLine());
+        System.out.print("Number of People: ");
+        int numPeople = Integer.parseInt(input.nextLine());
+        System.out.print("Rental Type: ");
+        String rentalType = input.nextLine();
+        System.out.print("Room standard: ");
+        String standard = input.nextLine();
+        System.out.println("Pool area");
+        double area = Double.parseDouble(input.nextLine());
+        System.out.print("Number of floor:");
+        int floor = Integer.parseInt(input.nextLine());
+        System.out.println();
+        addNewFacility(new Villa(serviceName,areaUse,rentalCost, numPeople,rentalType,standard,area,floor) {
+        });
+        System.out.println("added success!!!");
+        System.out.println("-------------------------------");
+
+    }
+
 
     public  static void displayAddNewFacility(){
         Scanner input = new Scanner(System.in);
@@ -65,11 +118,17 @@ public class FacilityController {
             System.out.print("input choice: ");
             choice = Integer.parseInt(input.nextLine());
             switch (choice){
+                case 1:
+                    addVilla();
+                    break;
+                case 2:
+                    addHouse();
+                    break;
                 case 3:
                     addRoom();
                     break;
                 case 4:
-                    menuFacility();
+                    facilityService.displayFacilityMaintenance();
                     break;
                 default:
                     System.out.println("no choice");
@@ -77,7 +136,9 @@ public class FacilityController {
         }
     }
 
-
+    public static void displayMaintenance(){
+        facilityService.displayFacilityMaintenance();
+    }
 
     public static void menuFacility(){
         Scanner input = new Scanner(System.in);
@@ -98,6 +159,9 @@ public class FacilityController {
                     break;
                 case 2:
                     displayAddNewFacility();
+                    break;
+                case 3:
+                    displayMaintenance();
                     break;
                 case 4:
                     FuramaController.displayMainMenu();
