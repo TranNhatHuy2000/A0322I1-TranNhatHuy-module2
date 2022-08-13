@@ -10,18 +10,18 @@ import java.util.List;
 public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeRepository employeeRepository = new EmployeeRepositoryImpl();
     @Override
-    public List<Employee> displayEmployee() {
-        return employeeRepository.displayEmployee();
+    public void displayEmployee() {
+        employeeRepository.displayEmployee();
     }
 
     @Override
-    public void addEmployee(Employee employee) {
-        employeeRepository.addEmployee(employee);
+    public void addEmployee() {
+        employeeRepository.addEmployee();
     }
 
     @Override
-    public void editEmployee(int index, Employee employee) {
-        employeeRepository.editEmployee(index, employee );
+    public void editEmployee() {
+        employeeRepository.editEmployee();
     }
 
 }

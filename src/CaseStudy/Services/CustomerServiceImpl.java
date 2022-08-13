@@ -12,17 +12,17 @@ import java.util.List;
 public class CustomerServiceImpl implements CustomerService {
     private CustomerRepository customerRepository = new CustomerRepositoryImpl();
     @Override
-    public List<Customer> displayCustomer() {
-        return customerRepository.displayCustomer();
+    public void displayCustomer() {
+        customerRepository.displayCustomer();
     }
 
     @Override
-    public void addCustomer(Customer customer) {
-        customerRepository.addCustomer(customer);
+    public void addCustomer() {
+        customerRepository.addCustomer();
     }
 
     @Override
-    public void editCustomer(int index, Customer customer) {
-        customerRepository.editCustomer(index, customer );
+    public void editCustomer() {
+        customerRepository.editCustomer();
     }
 }

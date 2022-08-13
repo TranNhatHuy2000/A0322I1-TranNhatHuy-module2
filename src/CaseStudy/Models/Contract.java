@@ -1,15 +1,15 @@
 package CaseStudy.Models;
 
 public class Contract {
-    private String contractNumber;    /*So hop dong*/
-    private String bookingCode;       /*Ma booking*/
+    private int contractNumber;    /*So hop dong*/
+    private int bookingCode;       /*Ma booking*/
     private double advanceDeposit;    /*So tien coc truoc*/
     private double totalPayment;      /*Tong so tien thanh toan*/
     private int idCustomer;           /*Ma khach hang*/
 
     public Contract(){}
 
-    public Contract(String contractNumber, String bookingCode, double advanceDeposit, double totalPayment, int idCustomer) {
+    public Contract(int contractNumber, int bookingCode, double advanceDeposit, double totalPayment, int idCustomer) {
         this.contractNumber = contractNumber;
         this.bookingCode = bookingCode;
         this.advanceDeposit = advanceDeposit;
@@ -17,19 +17,19 @@ public class Contract {
         this.idCustomer = idCustomer;
     }
 
-    public String getContractNumber() {
+    public int getContractNumber() {
         return contractNumber;
     }
 
-    public void setContractNumber(String contractNumber) {
+    public void setContractNumber(int contractNumber) {
         this.contractNumber = contractNumber;
     }
 
-    public String getBookingCode() {
+    public int getBookingCode() {
         return bookingCode;
     }
 
-    public void setBookingCode(String bookingCode) {
+    public void setBookingCode(int bookingCode) {
         this.bookingCode = bookingCode;
     }
 

@@ -4,7 +4,9 @@ import CaseStudy.Models.Facility;
 import java.util.Map;
 
 public interface FacilityRepository {
-    Map<Facility,Integer> displayFacility();
-    void addFacility(Facility facility);
+    void displayFacility();
+    void addNewVilla();
+    void addNewHouse();
+    void addNewRoom();
     void displayFacilityMaintenance();
 }

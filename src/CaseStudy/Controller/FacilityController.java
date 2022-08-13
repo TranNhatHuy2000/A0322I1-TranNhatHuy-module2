@@ -14,97 +14,6 @@ import java.util.Scanner;
 public class FacilityController {
     /*---------------------------------------------Facility---------------------------------------------*/
     private static FacilityService facilityService = new FacilityServiceImpl();
-    private static Map<Facility,Integer> facilityMap = FacilityRepositoryImpl.getFacilityList();
-
-
-    public static void displayFacilityList(){
-        for (Facility facility :facilityService.displayFacility().keySet()){
-            System.out.println(facility);
-        }
-    }
-
-    public static void addNewFacility(Facility facility){
-        facilityService.addFacility(facility);
-    }
-
-    public static void addRoom(){
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("-----Add Room-----");
-        System.out.print("Service Name : ");
-        String serviceName = input.nextLine();
-        System.out.print("Area Use: ");
-        double areaUse = Double.parseDouble(input.nextLine());
-        System.out.print("Rental Cost: ");
-        double rentalCost = Double.parseDouble(input.nextLine());
-        System.out.print("Number of People: ");
-        int numPeople = Integer.parseInt(input.nextLine());
-        System.out.print("Rental Type: ");
-        String rentalType = input.nextLine();
-        System.out.print("Free Service: ");
-        String freeService = input.nextLine();
-        System.out.println();
-        addNewFacility(new Room(serviceName,areaUse,rentalCost, numPeople,rentalType,freeService) {
-        });
-        System.out.println("added success!!!");
-        System.out.println("-------------------------------");
-
-    }
-
-    public static void addHouse(){
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("-----Add House-----");
-        System.out.print("Service Name : ");
-        String serviceName = input.nextLine();
-        System.out.print("Area Use: ");
-        double areaUse = Double.parseDouble(input.nextLine());
-        System.out.print("Rental Cost: ");
-        double rentalCost = Double.parseDouble(input.nextLine());
-        System.out.print("Number of People: ");
-        int numPeople = Integer.parseInt(input.nextLine());
-        System.out.print("Rental Type: ");
-        String rentalType = input.nextLine();
-        System.out.print("Room standard: ");
-        String standard = input.nextLine();
-        System.out.print("Number of floor:");
-        int floor = Integer.parseInt(input.nextLine());
-        System.out.println();
-        addNewFacility(new House(serviceName,areaUse,rentalCost, numPeople,rentalType,standard,floor) {
-        });
-        System.out.println("added success!!!");
-        System.out.println("-------------------------------");
-
-    }
-
-    public static void addVilla(){
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("-----Add Villa-----");
-        System.out.print("Service Name : ");
-        String serviceName = input.nextLine();
-        System.out.print("Area Use: ");
-        double areaUse = Double.parseDouble(input.nextLine());
-        System.out.print("Rental Cost: ");
-        double rentalCost = Double.parseDouble(input.nextLine());
-        System.out.print("Number of People: ");
-        int numPeople = Integer.parseInt(input.nextLine());
-        System.out.print("Rental Type: ");
-        String rentalType = input.nextLine();
-        System.out.print("Room standard: ");
-        String standard = input.nextLine();
-        System.out.println("Pool area");
-        double area = Double.parseDouble(input.nextLine());
-        System.out.print("Number of floor:");
-        int floor = Integer.parseInt(input.nextLine());
-        System.out.println();
-        addNewFacility(new Villa(serviceName,areaUse,rentalCost, numPeople,rentalType,standard,area,floor) {
-        });
-        System.out.println("added success!!!");
-        System.out.println("-------------------------------");
-
-    }
-
 
     public  static void displayAddNewFacility(){
         Scanner input = new Scanner(System.in);
@@ -116,19 +25,29 @@ public class FacilityController {
                     "3. Add New Room \n" +
                     "4. Back to menu");
             System.out.print("input choice: ");
-            choice = Integer.parseInt(input.nextLine());
+            try {
+                choice = Integer.parseInt(input.nextLine());
+            }catch (NumberFormatException e){
+                System.err.println("Wrong format input: "+e);
+            }
             switch (choice){
                 case 1:
-                    addVilla();
+                    System.out.println("-----Add Villa-----");
+                    facilityService.addNewVilla();
+                    System.out.println("-------------------------------");
                     break;
                 case 2:
-                    addHouse();
+                    System.out.println("-----Add House-----");
+                    facilityService.addNewHouse();
+                    System.out.println("-------------------------------");
                     break;
                 case 3:
-                    addRoom();
+                    System.out.println("-----Add Room-----");
+                    facilityService.addNewRoom();
+                    System.out.println("-------------------------------");
                     break;
                 case 4:
-                    facilityService.displayFacilityMaintenance();
+                    menuFacility();
                     break;
                 default:
                     System.out.println("no choice");
@@ -136,9 +55,6 @@ public class FacilityController {
         }
     }
 
-    public static void displayMaintenance(){
-        facilityService.displayFacilityMaintenance();
-    }
 
     public static void menuFacility(){
         Scanner input = new Scanner(System.in);
@@ -150,18 +66,22 @@ public class FacilityController {
                     "3. Display list facility maintenance\n" +
                     "4. Return main menu");
             System.out.print("input choice: ");
-            choice = Integer.parseInt(input.nextLine());
+            try {
+                choice = Integer.parseInt(input.nextLine());
+            }catch (NumberFormatException e){
+                System.err.println("Wrong format input: "+e);
+            }
             switch (choice){
                 case 1:
                     System.out.println("-----Display List Facility-----");
-                    displayFacilityList();
+                    facilityService.displayFacility();
                     System.out.println("-------------------------------");
                     break;
                 case 2:
                     displayAddNewFacility();
                     break;
                 case 3:
-                    displayMaintenance();
+                    facilityService.displayFacilityMaintenance();
                     break;
                 case 4:
                     FuramaController.displayMainMenu();

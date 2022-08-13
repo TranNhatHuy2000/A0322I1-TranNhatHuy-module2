@@ -4,17 +4,13 @@ public class House extends Facility {
     private String roomStandard;    /*tieu chuan phong*/
     private int numFloors;         /*so tang*/
 
-    public House(){
-
-    }
-
-    public House(String roomStandard, byte numFloors) {
+    public House(String roomStandard, int numFloors) {
         this.roomStandard = roomStandard;
         this.numFloors = numFloors;
     }
 
-    public House(String serviceName, double areaUse, double rentalCost, int maxNumPeople, String rentalType, String roomStandard, int numFloors) {
-        super(serviceName, areaUse, rentalCost, maxNumPeople, rentalType);
+    public House(String idFacility, String serviceName, double areaUse, double rentalCost, int maxNumPeople, String rentalType, String roomStandard, int numFloors) {
+        super(idFacility, serviceName, areaUse, rentalCost, maxNumPeople, rentalType);
         this.roomStandard = roomStandard;
         this.numFloors = numFloors;
     }

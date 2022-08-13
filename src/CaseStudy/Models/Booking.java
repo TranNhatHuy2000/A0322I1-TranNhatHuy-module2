@@ -1,5 +1,7 @@
 package CaseStudy.Models;
 
+import java.time.LocalDate;
+
 public class Booking {
     private int bookingCode;        /*ma booking*/
     private String startDate;       /*ngay bat dau*/

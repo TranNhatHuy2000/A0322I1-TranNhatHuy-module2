@@ -18,7 +18,12 @@ public class FuramaController {
                     "5. Promotion Management\n"+
                     "6. Exit");
             System.out.print("input choice: ");
-            choice = Integer.parseInt(input.nextLine());
+            try {
+                choice = Integer.parseInt(input.nextLine());
+            }catch (NumberFormatException e){
+                System.err.println("Wrong format input: "+e);
+            }
+
             switch (choice){
                 case 1:
                     EmployeeController.menuEmployee();
@@ -30,7 +35,7 @@ public class FuramaController {
                     FacilityController.menuFacility();
                     break;
                 case 4:
-                    menuBooking();
+                    BookingController.menuBooking();
                     break;
                 case 5:
                     menuPromotion();
@@ -44,28 +49,7 @@ public class FuramaController {
         }
     }
 
-    /*---------------------------------------------Booking---------------------------------------------*/
-    public static void menuBooking(){
-        Scanner input = new Scanner(System.in);
-        int choice = 0;
-        while (choice != 6) {
-            System.out.println("1. Display list booking\n" +
-                    "2. Display list booking\n" +
-                    "3. Create new constracts\n" +
-                    "4. Display list constracts\n" +
-                    "5. Edit contracts\n" +
-                    "6. Return main menu");
-            System.out.print("input choice: ");
-            choice = input.nextInt();
-            switch (choice){
-                case 6:
-                    displayMainMenu();
-                    break;
-                default:
-                    System.out.println("no choice");
-            }
-        }
-    }
+
     public static void menuPromotion(){
         Scanner input = new Scanner(System.in);
         int choice = 0;

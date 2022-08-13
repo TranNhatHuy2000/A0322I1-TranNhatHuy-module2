@@ -5,17 +5,14 @@ public class Villa extends Facility {
     private double poolArea;        /*dien tich ho boi*/
     private int numFlor;            /*so tang*/
 
-    public Villa() {
-    }
-
     public Villa(String roomStandard, double poolArea, int numFlor) {
         this.roomStandard = roomStandard;
         this.poolArea = poolArea;
         this.numFlor = numFlor;
     }
 
-    public Villa(String serviceName, double areaUse, double rentalCost, int maxNumPeople, String rentalType, String roomStandard, double poolArea, int numFlor) {
-        super(serviceName, areaUse, rentalCost, maxNumPeople, rentalType);
+    public Villa(String idFacility, String serviceName, double areaUse, double rentalCost, int maxNumPeople, String rentalType, String roomStandard, double poolArea, int numFlor) {
+        super(idFacility, serviceName, areaUse, rentalCost, maxNumPeople, rentalType);
         this.roomStandard = roomStandard;
         this.poolArea = poolArea;
         this.numFlor = numFlor;

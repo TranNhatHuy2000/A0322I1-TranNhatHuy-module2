@@ -11,13 +11,23 @@ public class FacilityServiceImpl implements FacilityService {
 
 
     @Override
-    public Map<Facility, Integer> displayFacility() {
-        return facilityRepository.displayFacility();
+    public void displayFacility() {
+     facilityRepository.displayFacility();
     }
 
     @Override
-    public void addFacility(Facility facility) {
-        facilityRepository.addFacility(facility);
+    public void addNewVilla() {
+        facilityRepository.addNewVilla();
+    }
+
+    @Override
+    public void addNewHouse() {
+        facilityRepository.addNewRoom();
+    }
+
+    @Override
+    public void addNewRoom() {
+        facilityRepository.addNewRoom();
     }
 
     @Override
